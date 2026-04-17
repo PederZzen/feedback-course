@@ -1,30 +1,20 @@
-import { Suspense } from "react";
 import {
-  type DocumentHandle,
   useNavigateToStudioDocument,
+  type DocumentHandle,
 } from "@sanity/sdk-react";
 import { Button } from "@sanity/ui";
+import { Suspense } from "react";
 
-const BUTTON_TEXT = "Open in Studio";
+function OpenInStudioButton({ handle }: { handle: DocumentHandle }) {
+  const { navigateToStudioDocument } = useNavigateToStudioDocument(handle);
+  return <Button onClick={navigateToStudioDocument} text="Open in Studio" />;
+}
 
-type OpenInStudioProps = {
-  handle: DocumentHandle;
-};
-
-export function OpenInStudio({ handle }: OpenInStudioProps) {
+// Wrap the component with Suspense since the hook may suspend
+export function OpenInStudio({ handle }: { handle: DocumentHandle }) {
   return (
-    <Suspense fallback={<OpenInStudioFallback />}>
+    <Suspense fallback={<Button text="Loading..." disabled />}>
       <OpenInStudioButton handle={handle} />
     </Suspense>
   );
-}
-
-function OpenInStudioFallback() {
-  return <Button text={BUTTON_TEXT} disabled />;
-}
-
-function OpenInStudioButton({ handle }: OpenInStudioProps) {
-  const { navigateToStudioDocument } = useNavigateToStudioDocument(handle);
-
-  return <Button onClick={navigateToStudioDocument} text={BUTTON_TEXT} />;
 }

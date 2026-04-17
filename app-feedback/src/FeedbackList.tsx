@@ -5,6 +5,7 @@ import { Stack, Button, Spinner } from "@sanity/ui";
 import { FeedbackPreview } from "./FeedbackPreview";
 import { OnlyMine } from "./OnlyMine";
 import { StatusSelector } from "./StatusSelector";
+import { FeedbackPreviewSelected } from "./FeedbackPreviewSelected";
 
 type FeedbackListProps = {
   selectedFeedback: DocumentHandle | null;
@@ -48,7 +49,11 @@ export function FeedbackList({
             tone={isSelected ? "primary" : undefined}
           >
             <Suspense fallback={<Spinner />}>
-              <FeedbackPreview {...feedback} />
+              {isSelected ? (
+                <FeedbackPreviewSelected {...feedback} />
+              ) : (
+                <FeedbackPreview {...feedback} />
+              )}
             </Suspense>
           </Button>
         );

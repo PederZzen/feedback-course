@@ -1,0 +1,2 @@
+{"sessionId":"6297b2","runId":"post-fix","location":"OpenInStudio.tsx:OpenInStudioFallback","message":"Fallback rendered (suspense pending)","data":{"hypothesisId":"H1,H2"},"timestamp":1776418940129}
+{"sessionId":"6297b2","runId":"post-fix","location":"OpenInStudio.tsx:OpenInStudio","message":"OpenInStudio parent mounted","data":{"hypothesisId":"H1","href":"http://localhost:3333/","isIframe":false,"parentOrigin":null,"handleKeys":["dataset","documentId","documentType","projectId"],"projectId":"so39vnkw","dataset":"production"},"timestamp":1776418940130}
